@@ -1,4 +1,6 @@
 #include <unistd.h>
+#include <stdarg.h>
+#include "printf.h"
 /**
  * _putchar - writes the character c to stdout
  * @c: The character to print
@@ -26,7 +28,11 @@ int _printf(const char* format, ...)
 	while ( (currentChar = *format) != '\0')
 	{
 		format++;
-		printedChars++;
+		if ( currentChar != '%' )
+		{
+			_putchar(currentChar);
+			printedChars++;			
+		}
 	}
 	return printedChars;
 }
