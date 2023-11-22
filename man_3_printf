@@ -12,6 +12,9 @@ Print ARGUMENTS based on FORMAT
 
 %s : String
 
+%u : Unsigned int
+
+%b : Convert unsigned int to binary
 .SH AUTHOR
 Written by Ezzud
 .SH SEE ALSO
