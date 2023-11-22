@@ -14,7 +14,7 @@ int _printf(const char *format, ...)
 	int printedChars = 0, int_value, uint_value;
 	char currentChar, chr_value;
 	const char *str_value;
-	char *binary_text = malloc(sizeof(char)*10);
+	char *binary_value;
 
 	va_start(arg_l, format);
 	while (*format != '\0')
@@ -30,8 +30,8 @@ int _printf(const char *format, ...)
 			{
 				case 'b':
 					uint_value = va_arg(arg_l, unsigned int);
-					itoa(i_to_binary(uint_value), binary_text, 10);
-					printedChars += print_string(binary_text);
+					binary_value = i_to_binary(uint_value);
+					printedChars += print_string(binary_value);
 					break;
 				case 'd':
 					int_value = va_arg(arg_l, int);

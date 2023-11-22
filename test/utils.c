@@ -1,5 +1,7 @@
 #include <unistd.h>
 #include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
 #include "printf.h"
 /**
  * get_int_digits - Get the number of digits of an int
@@ -54,9 +56,24 @@ int print_number(int i)
  * @i: The number to convert
  * Return: The binary number as a int
  */
-unsigned int i_to_binary(unsigned int i)
+char *i_to_binary(unsigned int x)
 {
-   return (i == 0 || i == 1 ? i : ((i % 2) + 10 * i_to_binary(i / 2)));
+	int binaryNum[32];
+	char *binaryText = malloc(sizeof(char) * 32);
+   	int i=0;
+   	int j;
+
+	if (x == 0)
+		return (0);
+
+	for (;x > 0;)
+	{
+    	binaryNum[i++] = x % 2;
+		x /= 2;
+   	}
+   	for (j = i-1; j >= 0; j--)
+		binaryText[i-(j+1)] = binaryNum[j] + '0';
+   	return (binaryText);
 }
 /**
  * print_unsigned_number - Print a number in the stdout

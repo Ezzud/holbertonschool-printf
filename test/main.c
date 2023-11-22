@@ -43,7 +43,7 @@ int main()
 	result10 = _printf("Unknown: %r", "rrgr");
 	printf("%s$%s | Char count: %d\n", YELLOW, RESET, result10);
 
-	result11 = _printf("Binary: %b", "52");
+	result11 = _printf("Binary: %b", 52);
 	printf("%s$%s | Char count: %d\n", YELLOW, RESET, result11);
 
 	printf("\nResults:\n");
