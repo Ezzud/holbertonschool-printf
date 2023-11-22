@@ -24,12 +24,16 @@ int _printf(const char *format, ...)
 
 			if (nextChar == 'd')
 			{
-				int_value = (int) va_arg(arg_l, int);
+				int_value = va_arg(arg_l, int);
 				printedChars += print_number(int_value);
 			} else if (nextChar == 'i')
 			{
-				int_value = (int) va_arg(arg_l, int);
+				int_value = va_arg(arg_l, int);
 				printedChars += print_number(int_value);
+			} else if (nextChar == 'u')
+			{
+				uint_value = va_arg(arg_l, unsigned int);
+				printedChars += print_unsigned_number(uint_value);
 			} else if (nextChar == 'c')
 			{
 				chr_value = (int) va_arg(arg_l, int);

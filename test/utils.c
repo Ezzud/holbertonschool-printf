@@ -49,6 +49,19 @@ int print_number(int i)
 	return (dig_count);
 }
 /**
+ * print_unsigned_number - Print a number in the stdout
+ * @i: The number to print
+ * Return: Number of chars printed
+ */
+int print_unsigned_number(unsigned int i)
+{
+	int dig_count = get_int_digits(i);
+	if (i / 10)
+		print_number(i / 10);
+	_putchar(i % 10 + '0');
+	return (dig_count);
+}
+/**
  * print_string - Print a string in the stdout
  * @str_value: The text to print
  * Return: Number of characters printed
