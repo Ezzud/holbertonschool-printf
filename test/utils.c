@@ -1,4 +1,5 @@
 #include <unistd.h>
+#include <stdlib.h>
 #include "printf.h"
 /**
  * get_int_digits - Get the number of digits of an int
@@ -47,6 +48,15 @@ int print_number(int i)
 		print_number(i / 10);
 	_putchar(i % 10 + '0');
 	return (dig_count);
+}
+/**
+ * i_to_binary - Convert an unsigned int to binary
+ * @i: The number to convert
+ * Return: The binary number as a int
+ */
+unsigned int i_to_binary(unsigned int i)
+{
+   return (i == 0 || i == 1 ? i : ((i % 2) + 10 * i_to_binary(i / 2)));
 }
 /**
  * print_unsigned_number - Print a number in the stdout

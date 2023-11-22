@@ -8,7 +8,7 @@
 #define CROSS "\xE2\x9D\x8C"
 int main()
 {
-	int firstresult, result1, result2, result3, result4, result5, result6, result7, result8, result9;
+	int firstresult, result1, result2, result3, result4, result5, result6, result7, result8, result9, result10, result11;
 
 	firstresult = _printf("Message basique");
 	printf("%s$%s | Char count: %d\n", YELLOW, RESET, firstresult);
@@ -39,6 +39,12 @@ int main()
 
 	result9 = _printf("Char: %c", 'C');
 	printf("%s$%s | Char count: %d\n", YELLOW, RESET, result9);
+
+	result10 = _printf("Unknown: %r", "rrgr");
+	printf("%s$%s | Char count: %d\n", YELLOW, RESET, result10);
+
+	result11 = _printf("Binary: %b", "52");
+	printf("%s$%s | Char count: %d\n", YELLOW, RESET, result11);
 
 	printf("\nResults:\n");
 	if(firstresult == 15)
@@ -90,6 +96,16 @@ int main()
 		printf("  %s%s %sTest #9 Successfull\n", GREEN, CHECK, RESET);
 	else
 		printf("  %s%s %sTest #9 Failed\n", RED, CROSS, RESET);
+
+	if(result10 == 11)
+		printf("  %s%s %sTest #10 Successfull\n", GREEN, CHECK, RESET);
+	else
+		printf("  %s%s %sTest #10 Failed\n", RED, CROSS, RESET);
+
+	if(result11 == 14)
+		printf("  %s%s %sTest #11 Successfull\n", GREEN, CHECK, RESET);
+	else
+		printf("  %s%s %sTest #11 Failed\n", RED, CROSS, RESET);
 
 	return(1);
 }
