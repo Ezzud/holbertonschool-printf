@@ -1,0 +1,20 @@
+.TH _printf 1 "November 2023" "Made for Holberton School" "User commands"
+.SH NAME
+_printf - Format text and print it to stdout
+.SH SYNOPSIS
+_printf FORMAT [ARGUMENT]...
+.SH DESCRIPTION
+Print ARGUMENTS based on FORMAT
+
+%d and %i : Integer
+
+%c : Character
+
+%s : String
+
+.SH AUTHOR
+Written by Ezzud
+.SH SEE ALSO
+man printf
+
+Source code available at: <https://github.com/Ezzud/holbertonschool-printf>
