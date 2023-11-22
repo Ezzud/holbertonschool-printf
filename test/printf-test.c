@@ -39,13 +39,19 @@ int _printf(const char *format, ...)
 				const char *str_value = (const char *) va_arg(arg_l, const char *);
 
 				printedChars += print_string(str_value);
+			} else
+			{
+				_putchar(currentChar);
+				_putchar(nextChar);
+				printedChars+=2;
 			}
 		} else
 		{
 			_putchar(currentChar);
 			printedChars++;
 		}
-		va_end(arg_l);
+
 	}
+	va_end(arg_l);
 	return (printedChars);
 }
