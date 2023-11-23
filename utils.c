@@ -25,10 +25,10 @@ int handle_format(va_list arg_l, char nextChar)
 		printedChars += print_string(i_to_binary(va_arg(arg_l, unsigned int)));
 	} else if (nextChar == 'd' || nextChar == 'i')
 	{
-		printedChars += print_number(va_arg(arg_l, int));
+		printedChars += print_string(_itoa(va_arg(arg_l, int), 10));
 	} else if (nextChar == 'u')
 	{
-		printedChars += print_unsigned_number(va_arg(arg_l, unsigned int));
+		printedChars += print_string(_utoa(va_arg(arg_l, unsigned int), 10));
 	} else if (nextChar == 'c')
 	{
 		printedChars += _putchar((int) va_arg(arg_l, int));
