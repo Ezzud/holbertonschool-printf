@@ -63,28 +63,6 @@ int get_int_digits(int v)
 	return (count);
 }
 /**
- * i_to_binary - Convert an unsigned int to binary
- * @x: The number to convert
- * Return: The binary number as a string
- */
-char *i_to_binary(unsigned int x)
-{
-	int binaryNum[32];
-	char *binaryText = malloc(sizeof(char) * 32);
-	int i = 0, j;
-
-	if (x == 0)
-		return (0);
-	for (; x > 0;)
-	{
-		binaryNum[i++] = x % 2;
-		x /= 2;
-	}
-	for (j = i - 1; j >= 0; j--)
-		binaryText[i - (j + 1)] = binaryNum[j] + '0';
-	return (binaryText);
-}
-/**
  * i_to_hex - Convert an unsigned int to hexadecimal
  * @num: The number to convert
  * @isUpper: If letter are in uppercase
