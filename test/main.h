@@ -7,4 +7,5 @@ int print_number(int i);
 int print_string(const char* str_value);
 int print_unsigned_number(unsigned int i);
 char *i_to_binary(unsigned int i);
+char *i_to_hex(unsigned num, int isUpper);
 #endif

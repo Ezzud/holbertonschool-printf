@@ -14,7 +14,7 @@ int _printf(const char *format, ...)
 	int printedChars = 0, int_value, uint_value;
 	char currentChar, chr_value;
 	const char *str_value;
-	char *binary_value;
+	char *binary_value, *hexa_value;
 
 	va_start(arg_l, format);
 	while (*format != '\0')
@@ -28,6 +28,20 @@ int _printf(const char *format, ...)
 
 			switch(nextChar)
 			{
+				case '%':
+					_putchar('%');
+					printedChars++;
+					break;
+				case 'x':
+					uint_value = va_arg(arg_l, unsigned int);
+					hexa_value = i_to_hex(uint_value, 0);
+					printedChars += print_string(hexa_value);
+					break;
+				case 'X':
+					uint_value = va_arg(arg_l, unsigned int);
+					hexa_value = i_to_hex(uint_value, 1);
+					printedChars += print_string(hexa_value);
+					break;
 				case 'b':
 					uint_value = va_arg(arg_l, unsigned int);
 					binary_value = i_to_binary(uint_value);

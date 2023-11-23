@@ -1,8 +1,8 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdio.h>
-#include "printf.h"
+#include <ctype.h>
+#include "main.h"
 /**
  * get_int_digits - Get the number of digits of an int
  * @v: Integer to check
@@ -54,7 +54,7 @@ int print_number(int i)
 /**
  * i_to_binary - Convert an unsigned int to binary
  * @i: The number to convert
- * Return: The binary number as a int
+ * Return: The binary number as a string
  */
 char *i_to_binary(unsigned int x)
 {
@@ -74,6 +74,32 @@ char *i_to_binary(unsigned int x)
    	for (j = i-1; j >= 0; j--)
 		binaryText[i-(j+1)] = binaryNum[j] + '0';
    	return (binaryText);
+}
+/**
+ * i_to_hex - Convert an unsigned int to hexadecimal
+ * @num: The number to convert
+ * @isUpper: If letter are in uppercase
+ * Return: The hexadecimal number as a string
+ */
+char *i_to_hex(unsigned num, int isUpper)
+{
+	int len;
+	char *hex, *hex2;
+	char upperhex[17] = "0123456789ABCDEF", lowerhex[17] = "0123456789abcdef";
+
+	len = num & 0xFFFF0000 ? (num & 0xFF000000 ? (num & 0xF0000000 ? 8 : 7) : (num & 0x00F00000 ? 6 : 5)) : (num & 0x0000FF00 ? (num & 0x0000F000 ? 4 : 3) : (num & 0x000000FF ? (num & 0x000000F0 ? 2 : 1) : 1));
+	hex = malloc((len+1)*sizeof(char)), hex2 = hex+len;
+	for (--hex2; ; hex2--)
+	{
+		if (isUpper)
+			*hex2 = upperhex[num & 0xF];
+		else
+			*hex2 = lowerhex[num & 0xF];
+		num >>= 4;
+		if (num == 0)
+			break;
+	}
+	return (hex2);
 }
 /**
  * print_unsigned_number - Print a number in the stdout
