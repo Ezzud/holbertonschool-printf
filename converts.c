@@ -82,9 +82,10 @@ char *_itoa(int num, int base)
  * *_utoa - Convert unsigned int to string
  * @num: Number to convert
  * @base: Base to convert
+ * @forcelc: Force lowercase
  * Return: Converted string
  */
-char *_utoa(unsigned int num, unsigned int base)
+char *_utoa(unsigned int num, unsigned int base, int forcelc)
 {
 	char buffer[1024];
 	unsigned int i, r;
@@ -98,8 +99,14 @@ char *_utoa(unsigned int num, unsigned int base)
 		r = num % base;
 
 		if (r >= 10)
+		{
 			buffer[i] = 65 + (r - 10);
-		else
+			if(forcelc > 0)
+			{
+				if (buffer[i] >= 65 && buffer[i] <= 90)
+				buffer[i] += 32;
+			}
+		} else
 			buffer[i] = 48 + r;
 
 		i++;
