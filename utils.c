@@ -22,6 +22,9 @@ int handle_format(va_list arg_l, char nextChar)
 	} else if (nextChar == 'b')
 	{
 		printedChars += print_string(_utoa(va_arg(arg_l, unsigned int), 2, 0));
+	} else if (nextChar == 'o')
+	{
+		printedChars += print_string(_utoa(va_arg(arg_l, unsigned int), 8, 0));
 	} else if (nextChar == 'd' || nextChar == 'i')
 	{
 		printedChars += print_string(_itoa(va_arg(arg_l, int), 10));
