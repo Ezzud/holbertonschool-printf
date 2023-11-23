@@ -15,6 +15,10 @@ Print ARGUMENTS based on FORMAT
 %u : Unsigned int
 
 %b : Convert unsigned int to binary
+
+%x : Convert unsigned int to hexadecimal (lowercase)
+
+%X : Convert unsigned int to hexadecimal (uppercase)
 .SH AUTHOR
 Written by Ezzud
 .SH SEE ALSO

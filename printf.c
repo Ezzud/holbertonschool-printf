@@ -1,7 +1,7 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include <string.h>
-#include "printf.h"
+#include "main.h"
 /**
  * _printf - Format a text and print it
  * @format: Original string to be formatted
