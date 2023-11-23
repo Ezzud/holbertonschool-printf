@@ -47,21 +47,3 @@ int handle_format(va_list arg_l, char nextChar)
 	va_end(arg_l);
 	return (printedChars);
 }
-/**
- * get_int_digits - Get the number of digits of an int
- * @v: Integer to check
- * Return: Number of digits
- */
-int get_int_digits(int v)
-{
-	int count = 0;
-	int temp = v;
-
-	if (temp < 0)
-		count++;
-	do {
-		temp /= 10;
-		++count;
-	} while (temp != 0);
-	return (count);
-}

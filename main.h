@@ -2,7 +2,6 @@
 #define _PRINTF_
 #include <stdarg.h>
 int _printf(const char *format, ...);
-int get_int_digits(int v);
 int _putchar(char c);
 int print_string(char *str_value);
 int handle_format(va_list arg_l, char nextChar);
