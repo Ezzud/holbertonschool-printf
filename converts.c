@@ -101,7 +101,7 @@ char *_utoa(unsigned int num, unsigned int base, int forcelc)
 		if (r >= 10)
 		{
 			buffer[i] = 65 + (r - 10);
-			if(forcelc > 0)
+			if (forcelc > 0)
 			{
 				if (buffer[i] >= 65 && buffer[i] <= 90)
 				buffer[i] += 32;
