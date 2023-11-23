@@ -1,8 +1,45 @@
-#include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <stdarg.h>
 #include "main.h"
+/**
+ * handle_format - Handle the printf formatting
+ * @arg_l: The va_list of the printf function
+ * @nextChar: Char corresponding to the format type
+ * Return: Number of printed chars
+ */
+int handle_format(va_list arg_l, char nextChar)
+{
+	int printedChars = 0;
+
+	if (nextChar == '%')
+	{
+		printedChars += _putchar(nextChar);
+	} else if (nextChar == 'x' || nextChar == 'X')
+	{
+		printedChars += print_string(i_to_hex(va_arg(arg_l, unsigned int),
+			isupper(nextChar) ? 1 : 0));
+	} else if (nextChar == 'b')
+	{
+		printedChars += print_string(i_to_binary(va_arg(arg_l, unsigned int)));
+	} else if (nextChar == 'd' || nextChar == 'i')
+	{
+		printedChars += print_number(va_arg(arg_l, int));
+	} else if (nextChar == 'u')
+	{
+		printedChars += print_unsigned_number(va_arg(arg_l, unsigned int));
+	} else if (nextChar == 'c')
+	{
+		printedChars += _putchar((int) va_arg(arg_l, int));
+	} else if (nextChar == 's')
+	{
+		printedChars += print_string((const char *) va_arg(arg_l, const char *));
+	} else
+		printedChars += (_putchar('%') + _putchar(nextChar));
+	va_end(arg_l);
+	return (printedChars);
+}
 /**
  * get_int_digits - Get the number of digits of an int
  * @v: Integer to check
@@ -22,58 +59,26 @@ int get_int_digits(int v)
 	return (count);
 }
 /**
- * _putchar - writes the character c to stdout
- * @c: The character to print
- *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
- */
-int _putchar(char c)
-{
-	return (write(1, &c, 1));
-}
-/**
- * print_number - Print a number in the stdout
- * @i: The number to print
- * Return: Number of chars printed
- */
-int print_number(int i)
-{
-	int dig_count = get_int_digits(i);
-
-	if (i < 0)
-	{
-		_putchar('-');
-		i = -i;
-	}
-	if (i / 10)
-		print_number(i / 10);
-	_putchar(i % 10 + '0');
-	return (dig_count);
-}
-/**
  * i_to_binary - Convert an unsigned int to binary
- * @i: The number to convert
+ * @x: The number to convert
  * Return: The binary number as a string
  */
 char *i_to_binary(unsigned int x)
 {
 	int binaryNum[32];
 	char *binaryText = malloc(sizeof(char) * 32);
-   	int i=0;
-   	int j;
+	int i = 0, j;
 
 	if (x == 0)
 		return (0);
-
-	for (;x > 0;)
+	for (; x > 0;)
 	{
-    	binaryNum[i++] = x % 2;
+		binaryNum[i++] = x % 2;
 		x /= 2;
-   	}
-   	for (j = i-1; j >= 0; j--)
-		binaryText[i-(j+1)] = binaryNum[j] + '0';
-   	return (binaryText);
+	}
+	for (j = i - 1; j >= 0; j--)
+		binaryText[i - (j + 1)] = binaryNum[j] + '0';
+	return (binaryText);
 }
 /**
  * i_to_hex - Convert an unsigned int to hexadecimal
@@ -81,14 +86,19 @@ char *i_to_binary(unsigned int x)
  * @isUpper: If letter are in uppercase
  * Return: The hexadecimal number as a string
  */
-char *i_to_hex(unsigned num, int isUpper)
+char *i_to_hex(unsigned int num, int isUpper)
 {
 	int len;
 	char *hex, *hex2;
 	char upperhex[17] = "0123456789ABCDEF", lowerhex[17] = "0123456789abcdef";
 
-	len = num & 0xFFFF0000 ? (num & 0xFF000000 ? (num & 0xF0000000 ? 8 : 7) : (num & 0x00F00000 ? 6 : 5)) : (num & 0x0000FF00 ? (num & 0x0000F000 ? 4 : 3) : (num & 0x000000FF ? (num & 0x000000F0 ? 2 : 1) : 1));
-	hex = malloc((len+1)*sizeof(char)), hex2 = hex+len;
+	len = num & 0xFFFF0000 ?
+	(num & 0xFF000000 ?
+		(num & 0xF0000000 ? 8 : 7) :
+		(num & 0x00F00000 ? 6 : 5)) : (num & 0x0000FF00 ?
+		(num & 0x0000F000 ? 4 : 3) : (num & 0x000000FF ?
+			(num & 0x000000F0 ? 2 : 1) : 1));
+	hex = malloc((len + 1) * sizeof(char)), hex2 = hex + len;
 	for (--hex2; ; hex2--)
 	{
 		if (isUpper)
@@ -100,34 +110,4 @@ char *i_to_hex(unsigned num, int isUpper)
 			break;
 	}
 	return (hex2);
-}
-/**
- * print_unsigned_number - Print a number in the stdout
- * @i: The number to print
- * Return: Number of chars printed
- */
-int print_unsigned_number(unsigned int i)
-{
-	int dig_count = get_int_digits(i);
-	if (i / 10)
-		print_number(i / 10);
-	_putchar(i % 10 + '0');
-	return (dig_count);
-}
-/**
- * print_string - Print a string in the stdout
- * @str_value: The text to print
- * Return: Number of characters printed
- */
-int print_string(const char *str_value)
-{
-	int i = 0;
-
-	while (*str_value != '\0')
-	{
-		_putchar(*str_value);
-		str_value++;
-		i++;
-	}
-	return (i);
 }
