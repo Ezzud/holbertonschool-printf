@@ -15,14 +15,13 @@ int _printf(const char *format, ...)
 	char currentChar;
 	va_list arg_l;
 
-	if (format == NULL)
-		return (0);
+	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
+		exit(1);
 	va_start(arg_l, format);
 	while (*format != '\0')
 	{
 		currentChar = *format;
 		format++;
-
 		if (currentChar == '%')
 		{
 			char nextChar = *format++;
