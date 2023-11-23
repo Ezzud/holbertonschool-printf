@@ -12,13 +12,15 @@ Print ARGUMENTS based on FORMAT
 
 %s : String
 
-%u : Unsigned int
+%u : Positive number
 
-%b : Convert unsigned int to binary
+%b : Convert number to binary
 
-%x : Convert unsigned int to hexadecimal (lowercase)
+%o : Convert number to octal
 
-%X : Convert unsigned int to hexadecimal (uppercase)
+%x : Convert number to hexadecimal (lowercase)
+
+%X : Convert number to hexadecimal (uppercase)
 .SH AUTHOR
 Written by Ezzud
 .SH SEE ALSO
