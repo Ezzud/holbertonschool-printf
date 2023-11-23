@@ -22,7 +22,7 @@ int handle_format(va_list arg_l, char nextChar)
 			isupper(nextChar) ? 1 : 0));
 	} else if (nextChar == 'b')
 	{
-		printedChars += print_string(i_to_binary(va_arg(arg_l, unsigned int)));
+		printedChars += print_string(_utoa(va_arg(arg_l, unsigned int), 2));
 	} else if (nextChar == 'd' || nextChar == 'i')
 	{
 		printedChars += print_string(_itoa(va_arg(arg_l, int), 10));
