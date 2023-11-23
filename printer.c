@@ -49,7 +49,7 @@ int print_unsigned_number(unsigned int i)
  * @str_value: The text to print
  * Return: Number of characters printed
  */
-int print_string(const char *str_value)
+int print_string(char *str_value)
 {
 	int i = 0;
 
