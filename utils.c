@@ -34,7 +34,8 @@ int handle_format(va_list arg_l, char nextChar)
 		printedChars += _putchar((int) va_arg(arg_l, int));
 	} else if (nextChar == 's')
 	{
-		printedChars += print_string((const char *) va_arg(arg_l, const char *));
+		printedChars += print_string(va_arg(arg_l, const char *) ?
+			va_arg(arg_l, const char *) : "(null)");
 	} else
 		printedChars += (_putchar('%') + _putchar(nextChar));
 	va_end(arg_l);
