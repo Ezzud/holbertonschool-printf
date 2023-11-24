@@ -18,7 +18,7 @@ int handle_format(va_list arg_l, char nextChar)
 		printedChars += _putchar(nextChar);
 	} else if (nextChar == 'x' || nextChar == 'X')
 	{
-		printedChars += print_string(_utoa(va_arg(arg_l, unsigned int), 
+		printedChars += print_string(_utoa(va_arg(arg_l, unsigned int),
 			16, isupper(nextChar) ? 0 : 1));
 	} else if (nextChar == 'b')
 	{
